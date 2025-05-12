@@ -16,3 +16,25 @@ def print_string(param):
     print(param)
     return param
 
+@app.route('/count/<int:param>')
+def count(param):
+    result = ''
+    for i in range(param):
+        result += f"{i}\n"
+    return result
+
+@app.route('/math/<int:num1>/<string:operation>/<int:num2>')
+def math(num1, operation, num2):
+    if operation == '+':
+        result = num1 + num2
+    elif operation == '-':
+        result = num1 - num2
+    elif operation == '*':
+        result = num1 * num2
+    elif operation == 'div':
+        result = num1 / num2
+    elif operation == '%':
+        result = num1 % num2
+    else:
+        return 'Invalid operation'
+    return str(result)
